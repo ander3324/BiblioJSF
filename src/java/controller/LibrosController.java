@@ -6,13 +6,12 @@
 package controller;
 
 import dao.LibrosDAO;
-import java.sql.Date;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import orm.Libros;
 
@@ -20,9 +19,9 @@ import orm.Libros;
  *
  * @author ander
  */
-@ManagedBean
-@SessionScoped
-@Named("libC")
+@ManagedBean(eager=true)
+@ViewScoped
+
 public class LibrosController {
 
     //Objetos necesarios:
@@ -73,6 +72,7 @@ public class LibrosController {
         libDao.insertLibro(libro);
         
         listaLibros = libDao.selectLibros();
+        
     }
     
     public void doBorrarLibro(int isbn){

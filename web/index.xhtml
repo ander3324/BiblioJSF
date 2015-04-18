@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
         <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-
+        <link type="text/css" rel="stylesheet" href="assets/js/simplePagination.css"/>
     </head>
     <body>
         <div class="container">
@@ -57,9 +57,9 @@
 
                         <f:view>
 
-
                             <h:form>
                                 <h:dataTable class="table table-responsive" value="#{librosController.listaLibros}" var="item">
+
                                     <h:column>
                                         <f:facet name="header">
                                             <h:outputText value="Isbn"/>
@@ -104,10 +104,10 @@
                                          </a>
                                         -->
                                     </h:column>
+
                                 </h:dataTable>
                             </h:form>
                         </f:view>
-
 
                     </div>
 
@@ -190,7 +190,7 @@
                                     </div>
 
                                     <div class="modal-footer" >
-                                        <input type="submit" jsf:action="#{librosController.doGuardarLibro()}" update="frm" class="btn btn-success" value="Guardar"/>
+                                        <input type="submit" jsf:action="#{librosController.doGuardarLibro()}" update="frm" class="btn btn-success" value="Guardar" />
                                         <input type="submit" class="btn btn-default" data-dismiss="modal" value="Cancelar"/>
                                     </div>
                                 </form>
@@ -207,7 +207,10 @@
             <script src="assets/js/bootstrap.min.js"></script>
             <script src="assets/js/dialogo.js"></script>
 
+            <script type="text/javascript" src="assets/js/jquery.simplePagination.js"></script>
+
         </div>
+
     </body>
 </html>
 

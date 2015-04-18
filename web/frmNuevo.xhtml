@@ -1,0 +1,20 @@
+
+    <f:view xmlns:f="http://xmlns.jcp.org/jsf/core"
+            xmlns:h="http://xmlns.jcp.org/jsf/html">
+        <h:form>
+            <h:outputLabel value="Completar los campos:"/>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Isbn:" for="isbn" />
+                <h:inputText id="isbn" value="#{librosController.libro.isbn}" title="Isbn" required="true" requiredMessage="The Isbn field is required."/>
+                <h:outputLabel value="Tit:" for="tit" />
+                <h:inputText id="tit" value="#{librosController.libro.tit}" title="Tit" required="true" requiredMessage="The Tit field is required."/>
+                <h:outputLabel value="Aut:" for="aut" />
+                <h:inputText id="aut" value="#{librosController.libro.aut}" title="Aut" required="true" requiredMessage="The Aut field is required."/>
+                <h:outputLabel value="Fec:" for="fec" />
+                <h:inputText id="fec" value="#{librosController.libro.fec}" title="Fec" >
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:inputText>
+            </h:panelGrid>
+            <h:commandButton action="#{librosController.doGuardarLibro()}" value="Guardar"/>
+        </h:form>
+    </f:view>

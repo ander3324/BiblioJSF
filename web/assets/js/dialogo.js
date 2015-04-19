@@ -12,3 +12,5 @@ function modal(title, form) {
     from = form;
     $('#abrirBtn').click();
 }
+
+

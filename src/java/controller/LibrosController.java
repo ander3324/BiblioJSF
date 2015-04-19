@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import orm.Libros;
@@ -19,9 +20,8 @@ import orm.Libros;
  *
  * @author ander
  */
-@ManagedBean(eager=true)
-@ViewScoped
-
+@ManagedBean
+@SessionScoped
 public class LibrosController {
 
     //Objetos necesarios:
@@ -39,6 +39,10 @@ public class LibrosController {
     
     @PostConstruct
     public void inicializar(){
+        setListaLibros(libDao.selectLibros());
+    }
+    
+    void cargarLibros() {
         setListaLibros(libDao.selectLibros());
     }
 
@@ -73,6 +77,17 @@ public class LibrosController {
         
         listaLibros = libDao.selectLibros();
         
+    }
+    
+    public String doPrepararModificacion(int isbn){
+        libro = libDao.selectLibroPorISBN(isbn);
+        return "frmEditar";
+    }
+    
+    public String doEditarLibro() {
+        libDao.updateLibro(libro);
+        cargarLibros();
+        return "index";
     }
     
     public void doBorrarLibro(int isbn){

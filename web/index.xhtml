@@ -58,7 +58,7 @@
                         <f:view>
 
                             <h:form>
-                                <h:dataTable class="table table-responsive" value="#{librosController.listaLibros}" var="item">
+                                <h:dataTable class="table table-responsive table-striped table-bordered" value="#{librosController.listaLibros}" var="item" width="100%">
 
                                     <h:column>
                                         <f:facet name="header">
@@ -87,14 +87,30 @@
                                         </h:outputText>
                                     </h:column>
                                     <h:column>
-                                        <a href="#" class="btn btn-info btn-sm">
+                                        
+                                        <input type="submit" class="btn btn-info btn-sm" jsf:id="btnEdit" jsf:action="#{librosController.doPrepararModificacion(item.isbn)}" jsf:value="Editar">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </input>
+                                        
+                                        <!--
+                                        <a class="btn btn-info btn-sm" actionListener="" onclick="modal('Nuevo Libro', 'frmNuevo.html');">
                                             <span class="glyphicon glyphicon-edit"></span>
                                             Editar
                                         </a>
+                                       -->
 
-
-                                        <input type="submit" class="btn btn-danger btn-sm" jsf:action="#{librosController.doBorrarLibro(item.isbn)}" update="frm"  value="Borrar">
+                                        <!--
+                                        <input class="btn btn-info btn-sm"  onclick="modal('Modificar Libro', 'frmEditar.html');"  value="Editar">
+                                            <span class="glyphicon glyphicon-edit"/>
+                                        </input>
+                                        -->
+                                        <!--
+                                        <input type="submit" class="btn btn-danger btn-sm" jsf:action="#" update="frm"  value="Borrar">
                                             <span class="glyphicon glyphicon-fire"/>
+                                        </input>
+                                        -->
+                                        <input type="submit" class="btn btn-danger btn-sm" jsf:id="btnBOrrar" jsf:action="#{librosController.doBorrarLibro(item.isbn)}" jsf:value="Borrar">
+                                            <span class="glyphicon glyphicon-fire" title="Borrar"></span>
                                         </input>
 
                                         <!--
@@ -129,9 +145,10 @@
             </div>
 
             <!--MODAL-->
+            
             <a href="#"  style="visibility: hidden;" class="btn" id="abrirBtn"></a>
 
-
+            
             <!-- INCLUIR CÓDIGO DEL DIALOGO -->
             <div class="container">
                 <div class="panel panel-default">

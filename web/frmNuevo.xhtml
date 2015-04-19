@@ -1,20 +1,30 @@
 
-    <f:view xmlns:f="http://xmlns.jcp.org/jsf/core"
-            xmlns:h="http://xmlns.jcp.org/jsf/html">
-        <h:form>
-            <h:outputLabel value="Completar los campos:"/>
-            <h:panelGrid columns="2">
-                <h:outputLabel value="Isbn:" for="isbn" />
-                <h:inputText id="isbn" value="#{librosController.libro.isbn}" title="Isbn" required="true" requiredMessage="The Isbn field is required."/>
-                <h:outputLabel value="Tit:" for="tit" />
-                <h:inputText id="tit" value="#{librosController.libro.tit}" title="Tit" required="true" requiredMessage="The Tit field is required."/>
-                <h:outputLabel value="Aut:" for="aut" />
-                <h:inputText id="aut" value="#{librosController.libro.aut}" title="Aut" required="true" requiredMessage="The Aut field is required."/>
-                <h:outputLabel value="Fec:" for="fec" />
-                <h:inputText id="fec" value="#{librosController.libro.fec}" title="Fec" >
-                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                </h:inputText>
-            </h:panelGrid>
-            <h:commandButton action="#{librosController.doGuardarLibro()}" value="Guardar"/>
-        </h:form>
-    </f:view>
+<form id="frmNuevo"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <form action="">
+        <div class="form-group">
+            <label for="isbn">ISBN: </label>
+            <input type="text" required="true" title="ISBN" class="form-control" jsf:id="isbn" placeholder="ISBN" jsf:value="#{librosController.libro.isbn}"/>
+        </div>
+        <div class="form-group">
+            <label for="tit">Título: </label>
+            <input type="text" required="true" class="form-control" jsf:id="tit" placeholder="Título" jsf:value="#{librosController.libro.tit}"/>
+        </div>
+        <div class="form-group">
+            <label for="aut">Autor: </label>
+            <input type="text" required="true" title="Autor" class="form-control" jsf:id="aut" placeholder="Autor" jsf:value="#{librosController.libro.aut}"/>
+        </div>
+        <div class="form-group">
+            <label for="fec">Fecha Lanzamiento: </label>
+            <input type="calendar" required="true" title="Fecha" class="form-control" jsf:id="fec" placeholder="Fecha" jsf:value="#{librosController.libro.fec}"/>
+
+        </div>
+        <div class="modal-footer" >
+            <input type="submit" jsf:action="#{librosController.doGuardarLibro()}" update="frm" class="btn btn-success" value="Guardar" />
+            <input type="submit" class="btn btn-default" data-dismiss="modal" value="Cancelar"/>
+        </div>
+    </form>
+
+
+</form>
